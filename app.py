@@ -4,6 +4,7 @@ from PIL import Image
 import pytesseract
 from pytesseract import Output, TesseractError
 from functions import convert_pdf_to_txt_pages, convert_pdf_to_txt_file, save_pages, displayPDF, images_to_txt
+import openai
 
 st.set_page_config(page_title="PDF to Text")
 
@@ -25,6 +26,7 @@ st.markdown("""
 """)
 languages = {
     'English': 'eng',
+    'Chinese': 'chi_sim',
     'French': 'fra',
     'Arabic': 'ara',
     'Spanish': 'spa',
@@ -46,14 +48,14 @@ with st.sidebar:
     st.markdown("""
     Made by [@nainia_ayoub](https://twitter.com/nainia_ayoub) 
     """)
-    st.markdown(
-        """
-        <a href="https://www.buymeacoffee.com/nainiayoub" target="_blank">
-        <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
-        </a>
-        """,
-        unsafe_allow_html=True,
-    )
+    #st.markdown(
+        #"""
+        #<a href="https://www.buymeacoffee.com/nainiayoub" target="_blank">
+       # <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174">
+        #</a>
+       # """,
+        #unsafe_allow_html=True,
+    #)
     
 
 pdf_file = st.file_uploader("Load your PDF", type=['pdf', 'png', 'jpg'])
